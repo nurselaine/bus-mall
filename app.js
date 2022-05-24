@@ -1,6 +1,6 @@
 // global variables
 
-let vote = 25; // set to 25 when done
+let vote = 3; // set to 25 when done
 let items = [];
 
 // DOM References
@@ -11,6 +11,10 @@ let imgTwo = document.getElementById('img-two');
 let imgThree = document.getElementById('img-three');
 let resultBtn = document.getElementById('show-results-btn');
 let resultList = document.getElementById('results-list');
+
+// Canvas References
+
+let ctx = document.getElementById('mychart');
 
 // Constructor
 
@@ -70,12 +74,63 @@ function render(){
   items[randomItems[0]].views++;
   items[randomItems[1]].views++;
   items[randomItems[2]].views++;
-
-  console.log(items);
-  randomItems = [];
+  
+  randomItems.splice(0,3);
+  console.log(randomItems);
   }  
 render();
-console.log(items);
+// console.log(randomItems);
+// console.log(items);
+
+// // Function to  Render Chart
+function renderChart(){
+  let names = [];
+  let votes = [];
+  let view = [];
+
+  for(let i = 0; i < items.length; i++){
+    names.push(items[i].name);
+    votes.push(items[i].votes);
+    view.push(items[i].views);
+  }
+
+  let myChartObj = {
+    type: 'bar',
+    data: {
+        labels: names,
+        datasets: [{
+            label: '# of Votes',
+            data: [12, 19, 3, 5, 2, 3],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+  };
+  const Chart = new Chart(ctx, myChartObj);
+} 
+renderChart();
 
 // Event listeners
 imgContainer.addEventListener('click', handleClick);
@@ -83,6 +138,7 @@ resultBtn.addEventListener('click', handleSubmit);
 
 // Event Handlers
 function handleClick(e){
+  // console.log(randomItems);
   if(vote > 0){
       vote--;
     
@@ -103,7 +159,7 @@ function handleSubmit(){
   if(vote === 0){
     for(let i = 0; i < items.length; i++){
       let elListItem = document.createElement('li');
-      elListItem.textContent = `image ${i}: ${items[i].name} Votes: ${items[i].votes}`;
+      elListItem.textContent = `${items[i].name} Votes: ${items[i].votes}`;
       resultList.appendChild(elListItem);
     }
   }
