@@ -1,5 +1,5 @@
 // global variables
-let votes = 10; // set to 25 when done
+let vote = 3; // set to 25 when done
 let items = [];
 
 // DOM References
@@ -9,7 +9,8 @@ let imgOne = document.getElementById('img-one');
 let imgTwo = document.getElementById('img-two');
 let imgThree = document.getElementById('img-three');
 let resultBtn = document.getElementById('show-results-btn');
-let resultList = document.getElementById('result-list');
+let resultList = document.getElementById('results-list');
+console.log(resultList);
 
 // Constructor
 
@@ -46,31 +47,35 @@ console.log(items);
 // Helper functions/executable Code
 
 // this function will grab three different img from items array
-let randomItems = [];
 function randomImg(){
+  let randomItems = [];
+
   for (let i = 0; i < 3; i++){
     let img = Math.floor(Math.random() * items.length);  
     randomItems.push(img);
   }
+  return randomItems;
 }
 
-// function validateArray(randomItems){
-//   let valid = false;
-//   while(!valid){
-//     if(randomItems[0] === randomItems[1] || 
-//       randomItems[0] === randomItems[2] || 
-//       randomItems[1] === randomItems[2]){
-//       randomImg();
-//     } else {
-//       valid = true;
-//       return randomItems;
-//     }
-//   }
-// }
-// console.log(randomItems);
+function validateArray(array){
+  let valid = false;
+  while(!valid){
+    for(let i = 0; i < array.length/2; i++){
+      for(let j = (array.length - 1)/2; j >= 0; j--){
+        if (array[i] === array[j]){
+          array = randomImg();
+        } else {
+          valid = true;
+          break;
+        }
+      }
+    }
+  }
+}
 
 function render(){
-  randomImg();
+  let randomItems = randomImg();
+  validateArray(randomItems);
   imgOne.src = items[randomItems[0]].src;
   imgOne.alt = items[randomItems[0]].name;
   imgTwo.src = items[randomItems[1]].src;
@@ -90,27 +95,33 @@ console.log(items);
 
 // Event listeners
 imgContainer.addEventListener('click', handleClick);
-resultList.addEventListener('submit', handleSubmit);
+resultBtn.addEventListener('click', handleSubmit);
 
 // Event Handlers
 function handleClick(e){
-  votes--;
-  render();
-  let imgClick = e.target.alt; // why are we targeting alt? when img alt attribute is nothing
+  if(vote > 0){
+      vote--;
+    
+    render();
+    let imgClick = e.target.alt; // why are we targeting alt? when img alt attribute is nothing
 
-  for(let i = 0; i < items.length; i++){
-    if(imgClick === items[i].name){
-      items[i].votes++;
+    for(let i = 0; i < items.length; i++){
+      if(imgClick === items[i].name){
+        items[i].votes++;
+      }
     }
   }
 }
 
 function handleSubmit(){
-  if(votes === 0){
+  console.log("here")
+  console.log(vote);
+  if(vote === 0){
     for(let i = 0; i < items.length; i++){
       let elListItem = document.createElement('li');
       elListItem.textContent = `image ${i}: ${items[i].name} Votes: ${items[i].votes}`;
       resultList.appendChild(elListItem);
     }
   }
+
 }
