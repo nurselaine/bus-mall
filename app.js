@@ -53,33 +53,64 @@ function randomImg(){
     randomItems.push(img);
   }
 }
-randomImg();
 
-function validateArray(randomItems){
-  let valid = false;
-  while(!valid){
-    if(randomItems[0] === randomItems[1] || randomItems[0] === randomItems[2] || randomItems[1] === randomItems[2]){
-      randomImg();
-    } else {
-      valid = true;
-      return randomItems;
-    }
-  }
-
-}
-validateArray(randomItems);
-console.log(randomItems);
+// function validateArray(randomItems){
+//   let valid = false;
+//   while(!valid){
+//     if(randomItems[0] === randomItems[1] || 
+//       randomItems[0] === randomItems[2] || 
+//       randomItems[1] === randomItems[2]){
+//       randomImg();
+//     } else {
+//       valid = true;
+//       return randomItems;
+//     }
+//   }
+// }
+// console.log(randomItems);
 
 function render(){
-    imgOne.src = items[randomItems[0]].src;
-    imgOne.alt = items[randomItems[0]].name;
-    imgTwo.src = items[randomItems[1]].src;
-    imgTwo.alt = items[randomItems[1]].name;
-    imgThree.src = items[randomItems[2]].src;
-    imgThree.alt = items[randomItems[2]].name;
+  randomImg();
+  imgOne.src = items[randomItems[0]].src;
+  imgOne.alt = items[randomItems[0]].name;
+  imgTwo.src = items[randomItems[1]].src;
+  imgTwo.alt = items[randomItems[1]].name;
+  imgThree.src = items[randomItems[2]].src;
+  imgThree.alt = items[randomItems[2]].name;
+
+  items[randomItems[0]].views++;
+  items[randomItems[1]].views++;
+  items[randomItems[2]].views++;
+
+  console.log(items);
+  randomItems = [];
   }  
 render();
+console.log(items);
 
 // Event listeners
+imgContainer.addEventListener('click', handleClick);
+resultList.addEventListener('submit', handleSubmit);
 
 // Event Handlers
+function handleClick(e){
+  votes--;
+  render();
+  let imgClick = e.target.alt; // why are we targeting alt? when img alt attribute is nothing
+
+  for(let i = 0; i < items.length; i++){
+    if(imgClick === items[i].name){
+      items[i].votes++;
+    }
+  }
+}
+
+function handleSubmit(){
+  if(votes === 0){
+    for(let i = 0; i < items.length; i++){
+      let elListItem = document.createElement('li');
+      elListItem.textContent = `image ${i}: ${items[i].name} Votes: ${items[i].votes}`;
+      resultList.appendChild(elListItem);
+    }
+  }
+}
