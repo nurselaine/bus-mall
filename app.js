@@ -1,5 +1,6 @@
 // global variables
-let vote = 3; // set to 25 when done
+
+let vote = 25; // set to 25 when done
 let items = [];
 
 // DOM References
@@ -10,7 +11,6 @@ let imgTwo = document.getElementById('img-two');
 let imgThree = document.getElementById('img-three');
 let resultBtn = document.getElementById('show-results-btn');
 let resultList = document.getElementById('results-list');
-console.log(resultList);
 
 // Constructor
 
@@ -41,41 +41,25 @@ new Item('tauntaun');
 new Item('unicorn');
 new Item('water-can');
 new Item('wine-glass');
-
-console.log(items);
+// console.log(items);
 
 // Helper functions/executable Code
 
 // this function will grab three different img from items array
 function randomImg(){
-  let randomItems = [];
-
-  for (let i = 0; i < 3; i++){
-    let img = Math.floor(Math.random() * items.length);  
-    randomItems.push(img);
-  }
-  return randomItems;
+  return Math.floor(Math.random()*items.length);
 }
 
-function validateArray(array){
-  let valid = false;
-  while(!valid){
-    for(let i = 0; i < array.length/2; i++){
-      for(let j = (array.length - 1)/2; j >= 0; j--){
-        if (array[i] === array[j]){
-          array = randomImg();
-        } else {
-          valid = true;
-          break;
-        }
-      }
+let randomItems = [];
+function render(){
+
+  while(randomItems.length < 6){
+    let randomNum = randomImg();
+    if (!randomItems.includes(randomNum)){
+      randomItems.push(randomNum);
     }
   }
-}
-
-function render(){
-  let randomItems = randomImg();
-  validateArray(randomItems);
+  console.log(randomItems);
   imgOne.src = items[randomItems[0]].src;
   imgOne.alt = items[randomItems[0]].name;
   imgTwo.src = items[randomItems[1]].src;
@@ -123,5 +107,4 @@ function handleSubmit(){
       resultList.appendChild(elListItem);
     }
   }
-
 }
