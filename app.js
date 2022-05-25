@@ -1,9 +1,9 @@
-// global variables
+// *******************  global variables
 
-let vote = 3; // set to 25 when done
+let vote = 25; // set to 25 when done
 let items = [];
 
-// DOM References
+// *******************  DOM References
 
 let imgContainer = document.getElementById('img-container');
 let imgOne = document.getElementById('img-one');
@@ -12,11 +12,11 @@ let imgThree = document.getElementById('img-three');
 let resultBtn = document.getElementById('show-results-btn');
 let resultList = document.getElementById('results-list');
 
-// Canvas References
+// *******************  Canvas References
 
 let ctx = document.getElementById('myChart');
 
-// Constructor
+// *******************  Constructor
 
 function Item(name, fileExtension = 'jpg'){
   this.votes = 0;
@@ -27,27 +27,43 @@ function Item(name, fileExtension = 'jpg'){
   items.push(this);
 }
 
-new Item('bag');
-new Item('banana');
-new Item('bathroom');
-new Item('boots');
-new Item('sweep', 'png');
-new Item('breakfast');
-new Item('bubblegum');
-new Item('chair');
-new Item('cthulhu');
-new Item('dog-duck');
-new Item('dragon');
-new Item('pet-sweep');
-new Item('scissors');
-new Item('shark');
-new Item('tauntaun');
-new Item('unicorn');
-new Item('water-can');
-new Item('wine-glass');
-// console.log(items);
+// ************************ Create local storage
 
-// Helper functions/executable Code
+// retrieve items from local storage 
+let retrieveItems = localStorage.getItem('items');
+console.log(items);
+
+// converting retrieved objects back to useable code
+let parsedItems = JSON.parse(retrieveItems);
+console.log(parsedItems);
+
+// accumulate data for chart
+if (retrieveItems){
+  items = parsedItems;
+  console.log(items);
+} else {
+  console.log('hello');
+  new Item('bag');
+  new Item('banana');
+  new Item('bathroom');
+  new Item('boots');
+  new Item('sweep', 'png');
+  new Item('breakfast');
+  new Item('bubblegum');
+  new Item('chair');
+  new Item('cthulhu');
+  new Item('dog-duck');
+  new Item('dragon');
+  new Item('pet-sweep');
+  new Item('scissors');
+  new Item('shark');
+  new Item('tauntaun');
+  new Item('unicorn');
+  new Item('water-can');
+  new Item('wine-glass');
+}
+
+// *************** Helper functions/executable Code
 
 // this function will grab three different img from items array
 function randomImg(){
@@ -56,7 +72,6 @@ function randomImg(){
 
 let randomItems = [];
 function render(){
-
   while(randomItems.length < 6){
     let randomNum = randomImg();
     if (!randomItems.includes(randomNum)){
@@ -76,13 +91,12 @@ function render(){
   items[randomItems[2]].views++;
   
   randomItems.splice(0,3);
-  console.log(randomItems);
   }  
 render();
 // console.log(randomItems);
 // console.log(items);
 
-// // Function to  Render Chart
+// ************************  Function to  Render Chart
 function renderChart(){
   let names = [];
   let votes = [];
@@ -102,20 +116,20 @@ function renderChart(){
             label: '# of Votes',
             data: votes,
             backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
+                '#7400b8',
+                '#5e60ce',
+                '#4ea8de',
+                '#48bfe3',
+                '#64dfdf',
+                '#72efdd'
             ],
             borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
+                '#7400b8',
+                '#5e60ce',
+                '#4ea8de',
+                '#48bfe3',
+                '#64dfdf',
+                '#72efdd'
             ],
             borderWidth: 1
         },
@@ -123,20 +137,20 @@ function renderChart(){
           label: '# of Views',
           data: view,
           backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(255, 206, 86, 0.2)',
-              'rgba(75, 192, 192, 0.2)',
-              'rgba(153, 102, 255, 0.2)',
-              'rgba(255, 159, 64, 0.2)'
+            '#0081a7',
+            '#5e60ce',
+            '#4ea8de',
+            '#48bfe3',
+            '#64dfdf',
+            '#72efdd'
           ],
           borderColor: [
-              'rgba(255, 99, 132, 1)',
-              'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)',
-              'rgba(75, 192, 192, 1)',
-              'rgba(153, 102, 255, 1)',
-              'rgba(255, 159, 64, 1)'
+              '#0081a7',
+                '#5e60ce',
+                '#4ea8de',
+                '#48bfe3',
+                '#64dfdf',
+                '#72efdd'
           ],
           borderWidth: 1
       }]
@@ -153,11 +167,11 @@ function renderChart(){
 } 
 // renderChart();
 
-// Event listeners
+// ***********************  Event listeners
 imgContainer.addEventListener('click', handleClick);
 resultBtn.addEventListener('click', handleSubmit);
 
-// Event Handlers
+// ****************************  Event Handlers
 function handleClick(e){
   // console.log(randomItems);
   if(vote > 0){
@@ -175,7 +189,6 @@ function handleClick(e){
 }
 
 function handleSubmit(){
-  console.log("here")
   console.log(vote);
   if(vote === 0){
     // for(let i = 0; i < items.length; i++){
@@ -184,5 +197,11 @@ function handleSubmit(){
     //   resultList.appendChild(elListItem);
     // }
     renderChart();
+  // stringify data
+  let stringifiedItems = JSON.stringify(items);
+  console.log(stringifiedItems);
+
+  // use stringified objects and move into local storage
+  localStorage.setItem('items', stringifiedItems);
   }
 }

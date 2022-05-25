@@ -36,3 +36,18 @@ Create a catalog of items that allows user to pick most popular and view items b
 - Event Listener
   - clicks: On img to add votes, each click will rerender three new images
   - Button: display results - only after 25 votes 
+
+## Stringify data
+
+## Add storage for application to remeber previous results of user votes
+1. Create an array of objects [{},{},{}]
+2. Stringify data: JSON>stringy(array of data) -- needs to be completed added to local storage 
+  - cannot stringify methods/prototypes
+3. Create key in local storage: 
+let stringifiedData = JSON.strinigy(array of data);
+
+## What is JSON 
+- A database 
+- local storage may be useful to test storage 
+- not best use of storage because of storing private data 
+- Local storage is unique to users computer 
