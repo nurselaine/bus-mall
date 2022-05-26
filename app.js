@@ -116,20 +116,20 @@ function renderChart(){
             label: '# of Votes',
             data: votes,
             backgroundColor: [
-                '#7400b8',
-                '#5e60ce',
-                '#4ea8de',
-                '#48bfe3',
-                '#64dfdf',
-                '#72efdd'
+                '#c8a4a6',
+                '#efdcd6',
+                '#e2bfbb',
+                '#cdc0ba',
+                '#f5f5f7',
+                '#aab6ac'
             ],
             borderColor: [
-                '#7400b8',
-                '#5e60ce',
-                '#4ea8de',
-                '#48bfe3',
-                '#64dfdf',
-                '#72efdd'
+              '#c8a4a6',
+              '#efdcd6',
+              '#e2bfbb',
+              '#cdc0ba',
+              '#f5f5f7',
+              '#aab6ac'
             ],
             borderWidth: 1
         },
@@ -137,20 +137,20 @@ function renderChart(){
           label: '# of Views',
           data: view,
           backgroundColor: [
-            '#0081a7',
-            '#5e60ce',
-            '#4ea8de',
-            '#48bfe3',
-            '#64dfdf',
-            '#72efdd'
+            '#efdcd6',
+            '#c8a4a6',
+            '#e2bfbb',
+            '#cdc0ba',
+            '#f5f5f7',
+            '#aab6ac'
           ],
           borderColor: [
-              '#0081a7',
-                '#5e60ce',
-                '#4ea8de',
-                '#48bfe3',
-                '#64dfdf',
-                '#72efdd'
+            '#efdcd6',
+            '#c8a4a6',
+            '#e2bfbb',
+            '#cdc0ba',
+            '#f5f5f7',
+            '#aab6ac'
           ],
           borderWidth: 1
       }]
