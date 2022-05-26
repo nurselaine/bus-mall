@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <link rel="stylsheet" href="./css/reset.css">
-  <link rel="stylesheet" href="./css/style.css"> 
+  <link rel="stylesheet" href="./css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Poppins:wght@700&display=swap" rel="stylesheet"> 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,12 +13,32 @@
   <main>
     <!-- header -->
     <header>
-      <nav></nav>
+      <navbar>
+        <section class="nav-logo">
+          <p>BusApp</p>
+          <img src="./img/bus.png" alt="bus-logo" class="bus-logo">
+        </section>
+        <ul>
+          <li>Products</li>
+          <li>Member Benefits</li>
+          <li>Resources</li>
+          <li>About</li>
+        </ul>
+        <!-- <section class="log-in">
+          <p>Log In</p>
+          <div>Get Started</div>
+        </section> -->
+      </navbar>
     </header>
     <!-- display results/sidebar -->
     <section class="vote-container">
       <!-- display three images -->
-    <h2 class="vote-title">ITEM VOTE</h2>
+    <div class="title">
+      <p>Get Your Shopping Right.All in the <b>BusApp®</b></p>
+      <img src="./img/bus.png" alt="bus logo" title="bus icon">
+    </div>
+    <div class="aura"></div>
+    <div class="vote-prompt">Check out what BusApp has to offer & <b>vote for you favorites:</b></div>
     <section id="img-container">
       <img id="img-one" class="image" src="" alt="">
       <img id="img-two" class="image" src="" alt="">
@@ -32,7 +53,13 @@
     <canvas id="myChart" width="400px" height="auto"></canvas>
   <!-- footer -->
   <footer>
-    <p></p>
+    <ul>
+      <li><a href="https://www.sofi.com/?campaign=MRKT_SEM_BRA%7CBrand%7CBrand%7CCore%7CGG%7CDesktop%7CExact%7CSeattle-WA%7CENG_e_g_c_327557548065_sofi&utm_source=MRKT_ADWORDS&utm_medium=SEM&utm_campaign=MRKT_SEM_BRA%7CBrand%7CBrand%7CCore%7CGG%7CDesktop%7CExact%7CSeattle-WA%7CENG_e_g_c_327557548065_sofi&cl_vend=google&cl_ch=sem&cl_camp=1686274787&cl_adg=67508412884&cl_crtv=327557548065&cl_kw=sofi&cl_pub=google.com&cl_place=&cl_dvt=c&cl_pos=&cl_mt=e&cl_gtid=kwd-104064049&opti_ca=1686274787&opti_ag=67508412884&opti_ad=327557548065&opti_key=kwd-104064049&gclid=CjwKCAjwp7eUBhBeEiwAZbHwkeYt6DQjuwSPJG_DatDSiGL9yeumIZmpLWa65QEQhFbuF7vFkTxUQBoCuA0QAvD_BwE&gclsrc=aw.ds&"></a>PRODUCTS</li>
+      <li><a href="https://www.sofi.com/?campaign=MRKT_SEM_BRA%7CBrand%7CBrand%7CCore%7CGG%7CDesktop%7CExact%7CSeattle-WA%7CENG_e_g_c_327557548065_sofi&utm_source=MRKT_ADWORDS&utm_medium=SEM&utm_campaign=MRKT_SEM_BRA%7CBrand%7CBrand%7CCore%7CGG%7CDesktop%7CExact%7CSeattle-WA%7CENG_e_g_c_327557548065_sofi&cl_vend=google&cl_ch=sem&cl_camp=1686274787&cl_adg=67508412884&cl_crtv=327557548065&cl_kw=sofi&cl_pub=google.com&cl_place=&cl_dvt=c&cl_pos=&cl_mt=e&cl_gtid=kwd-104064049&opti_ca=1686274787&opti_ag=67508412884&opti_ad=327557548065&opti_key=kwd-104064049&gclid=CjwKCAjwp7eUBhBeEiwAZbHwkeYt6DQjuwSPJG_DatDSiGL9yeumIZmpLWa65QEQhFbuF7vFkTxUQBoCuA0QAvD_BwE&gclsrc=aw.ds&"></a>COMPANY</li>
+      <li><a href="https://www.sofi.com/?campaign=MRKT_SEM_BRA%7CBrand%7CBrand%7CCore%7CGG%7CDesktop%7CExact%7CSeattle-WA%7CENG_e_g_c_327557548065_sofi&utm_source=MRKT_ADWORDS&utm_medium=SEM&utm_campaign=MRKT_SEM_BRA%7CBrand%7CBrand%7CCore%7CGG%7CDesktop%7CExact%7CSeattle-WA%7CENG_e_g_c_327557548065_sofi&cl_vend=google&cl_ch=sem&cl_camp=1686274787&cl_adg=67508412884&cl_crtv=327557548065&cl_kw=sofi&cl_pub=google.com&cl_place=&cl_dvt=c&cl_pos=&cl_mt=e&cl_gtid=kwd-104064049&opti_ca=1686274787&opti_ag=67508412884&opti_ad=327557548065&opti_key=kwd-104064049&gclid=CjwKCAjwp7eUBhBeEiwAZbHwkeYt6DQjuwSPJG_DatDSiGL9yeumIZmpLWa65QEQhFbuF7vFkTxUQBoCuA0QAvD_BwE&gclsrc=aw.ds&"></a>LEGAL</li>
+      <li><a href="https://www.sofi.com/?campaign=MRKT_SEM_BRA%7CBrand%7CBrand%7CCore%7CGG%7CDesktop%7CExact%7CSeattle-WA%7CENG_e_g_c_327557548065_sofi&utm_source=MRKT_ADWORDS&utm_medium=SEM&utm_campaign=MRKT_SEM_BRA%7CBrand%7CBrand%7CCore%7CGG%7CDesktop%7CExact%7CSeattle-WA%7CENG_e_g_c_327557548065_sofi&cl_vend=google&cl_ch=sem&cl_camp=1686274787&cl_adg=67508412884&cl_crtv=327557548065&cl_kw=sofi&cl_pub=google.com&cl_place=&cl_dvt=c&cl_pos=&cl_mt=e&cl_gtid=kwd-104064049&opti_ca=1686274787&opti_ag=67508412884&opti_ad=327557548065&opti_key=kwd-104064049&gclid=CjwKCAjwp7eUBhBeEiwAZbHwkeYt6DQjuwSPJG_DatDSiGL9yeumIZmpLWa65QEQhFbuF7vFkTxUQBoCuA0QAvD_BwE&gclsrc=aw.ds&"></a>QUESTIONS</li>
+    </ul>
+    <img src="./img/bus.png">
   </footer>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
 <script src="app.js"></script>
